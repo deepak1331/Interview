@@ -1,4 +1,4 @@
-package org.example.java8;
+package src.main.java8;
 
 
 public class TestUser {
