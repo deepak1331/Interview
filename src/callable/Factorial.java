@@ -19,8 +19,9 @@ public class Factorial implements Callable<Long> {
         long result = 1;
         for (int i = 1; i <= number; i++) {
             result *= i;
-            TimeUnit.MILLISECONDS.sleep(1000);
+            TimeUnit.MILLISECONDS.sleep(100);
         }
+        System.out.printf("\nCurrent Thread Name : %s", Thread.currentThread().getName());
         return result;
     }
 }
