@@ -16,7 +16,7 @@ class MultiThreading implements Runnable {
         for (int i = 1; i < 11; i++) {
             System.out.printf("\n%s => %d X %d = %d", Thread.currentThread().getName(), num, i, num * i);
             try {
-                Thread.sleep(delay * 1000);
+                Thread.sleep(delay * 500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -36,7 +36,7 @@ public class MyRunnableMain {
         Thread t4 = new Thread(new MultiThreading(random.nextInt(10), random.nextInt(3)));
         t1.start();
         t2.start();
-        //t3.start();
-        //t4.start();
+        t3.start();
+        t4.start();
     }
 }

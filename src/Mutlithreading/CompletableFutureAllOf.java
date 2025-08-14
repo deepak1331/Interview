@@ -1,4 +1,4 @@
-package src.java8;
+package src.Mutlithreading;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -11,13 +11,13 @@ public class CompletableFutureAllOf {
         System.out.println("Starting CompletableFutureDemo");
 
         CompletableFuture<String> cf1 =
-                CompletableFuture.supplyAsync(()->print(2, '-'));
+                CompletableFuture.supplyAsync(() -> print(2, '-'));
 
         CompletableFuture<String> cf2 =
-                CompletableFuture.supplyAsync(()->print(1, '0'));
+                CompletableFuture.supplyAsync(() -> print(1, '0'));
 
         try {
-            System.out.println(cf1.get(1000, TimeUnit.MILLISECONDS));
+            System.out.println(cf1.get(500, TimeUnit.MILLISECONDS));
 
             System.out.println(cf2.get());
         } catch (TimeoutException ignored) {
@@ -29,18 +29,18 @@ public class CompletableFutureAllOf {
     }
 
     private static String print(int delay, char ch) {
-        for(int i=0;i<100;i++){
+        for (int i = 0; i < 10000; i++) {
             try {
                 System.out.print(ch);
                 Thread.sleep(delay);
             } catch (InterruptedException ignored) {
             }
         }
-        return String.format("%s : %d %s", currentThread(),delay, ch);
+        return String.format("%s :  Delay: %d Char: %s", currentThread(), delay, ch);
     }
 
     public static String currentThread() {
-        return String.format("\nCurrent Thread is : %s", Thread.currentThread().getName());
+        return String.format("\nCurrent Thread is :%s", Thread.currentThread().getName());
     }
 
 }

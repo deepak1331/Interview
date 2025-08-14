@@ -1,7 +1,9 @@
-package src.java8;
+package src.Mutlithreading;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class CompletableFutureDemo {
 
@@ -20,7 +22,11 @@ public class CompletableFutureDemo {
         */
         //Using lambda same be done as following:
         CompletableFuture<String> result = CompletableFuture.supplyAsync(CompletableFutureDemo::wait_Print);
-        //System.out.println(result.get());
+        //System.out.println(result.getNow("Not ready yet"));
+        try {
+            System.out.println(result.get(1000, TimeUnit.MILLISECONDS));
+        } catch (TimeoutException e) {
+        }
 
         System.out.println(currentThread());
     }

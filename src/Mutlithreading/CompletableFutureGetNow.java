@@ -1,4 +1,4 @@
-package src.java8;
+package src.Mutlithreading;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ public class CompletableFutureGetNow {
         for (int i = 1; i < 11; i++) {
             try {
                 stringBuilder.append("\nLoop: ").append(i);
-                Thread.sleep(500);
+                Thread.sleep(499);
             } catch (InterruptedException ignored) {
             }
         }

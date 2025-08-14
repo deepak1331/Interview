@@ -1,16 +1,11 @@
 package src.Mutlithreading;
 
 class Multithreading extends Thread {
-    public void run()
-    {
+    public void run() {
         try {
             // Displaying the thread that is running
-            System.out.print(
-                    "\nThread " + Thread.currentThread().getName()
-                            + " is running");
-        }
-        catch (Exception e) {
-
+            System.out.printf("\nThread %s is running", Thread.currentThread().getName());
+        } catch (Exception e) {
             // Throwing an exception
             System.out.println("Exception is caught");
         }
@@ -24,9 +19,8 @@ class MultiThreadingClass extends Thread {
                         "\nThreadGroup: %s" +
                         "\nClass(): %s" +
                         "\nId: %s" +
-                        "\nisDaemon: %s"+
+                        "\nisDaemon: %s" +
                         "\nisAlive: %s",
-
                 Thread.currentThread().getName(),
                 Thread.currentThread().getThreadGroup(),
                 Thread.currentThread().getClass(),
