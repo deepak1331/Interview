@@ -1,6 +1,6 @@
-package src;
+package src.problems;
 
-public class Seq {
+public class MaxRepeatSequence {
 
     //Find the length of the longest contiguous sequence of either 1s or 0s in the array.
     //Input: arr[] = [0, 1, 0, 1, 1, 1, 1]	Output = 4

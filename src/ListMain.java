@@ -30,7 +30,7 @@ public class ListMain {
         list.stream().sorted().forEach(System.out::println);
 
         System.out.print("\nCountry Name starting with I : ");
-        list.stream().filter(a->a.startsWith("I")).forEach(System.out::print);
+        list.stream().filter(a -> a.startsWith("I")).forEach(System.out::print);
 
         /*
          * 2. Arrays.asList():
@@ -56,9 +56,9 @@ public class ListMain {
         asian.sort((a, b) -> a.length() - b.length());
         asian.forEach(System.out::println);
 
-        List<Integer> num = Arrays.asList(4,8,2,6,9);
+        List<Integer> num = Arrays.asList(4, 8, 2, 6, 13, 9);
 
-        System.out.println("Min : "+num.stream().min(Integer::compareTo).get());
-        System.out.println("Max : "+num.stream().max((x,y)->x.compareTo(y)).get());
+        System.out.println("Min : " + num.stream().min(Integer::compareTo).get());
+        System.out.println("Max : " + num.stream().max((x, y) -> x.compareTo(y)).get());
     }
 }

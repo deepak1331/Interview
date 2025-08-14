@@ -2,7 +2,7 @@ package src.problems;
 
 import java.util.Arrays;
 
-public class Myclass {
+public class PutZerosToEnd {
 
     public static void main(String[] args) {
 
