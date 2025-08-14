@@ -23,7 +23,7 @@ public class ExecutorServiceExample {
         executor.shutdown();
         try {
             // Wait for all tasks to complete or timeout
-            boolean result = executor.awaitTermination(1, TimeUnit.MINUTES);
+            boolean result = executor.awaitTermination(5, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
