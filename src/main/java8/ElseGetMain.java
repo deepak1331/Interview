@@ -1,7 +1,4 @@
-package org.example.java8;
-
-import src.main.java8.NameInterface;
-import src.main.java8.RandomNameGenerator;
+package src.main.java8;
 
 import java.util.Optional;
 
