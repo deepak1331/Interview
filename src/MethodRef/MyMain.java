@@ -1,7 +1,6 @@
 package src.MethodRef;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 class Hello {
     private String name;
@@ -13,7 +12,7 @@ class Hello {
 
     public Hello() {
         this.name = "Default name";
-        System.out.println("Hello Constructor called.");
+        System.out.println("Hello Default Constructor called.");
     }
 
     public static void hi() {
@@ -43,7 +42,7 @@ public class MyMain {
         myInterface3.greet();
 
         List<String> namelist = List.of("Jerry", "Mickey", "Simba");
-        List<Hello> helloList = namelist.stream().map(Hello::new).collect(Collectors.toList());
+        List<Hello> helloList = namelist.stream().map(Hello::new).toList();
         helloList.forEach(Hello::bye);
 
 
@@ -52,9 +51,8 @@ public class MyMain {
         student.display();
 
         String str = "Deepak";
-        provider= ()-> new Student(str);
+        provider = () -> new Student(str);
         Student student2 = provider.getStudent();
         student2.show();
-
     }
 }

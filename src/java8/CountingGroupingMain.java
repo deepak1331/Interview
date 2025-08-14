@@ -1,4 +1,4 @@
-package src.Mutlithreading;
+package src.java8;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,16 +14,16 @@ public class CountingGroupingMain {
 
         Map<Character, Long> freqMap = str.chars().mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(
-                        Function.identity(), Collectors.counting()
-                ));
+                        Function.identity(), Collectors.counting()));
         System.out.println(freqMap);
 
+        Map<Character,Long> myMap = str.chars().mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
         String input = "Java is awesome Java is simple";
-         Map<String, Long> wordMap = Arrays.stream(input.toLowerCase().split(" ")).collect(Collectors
+        Map<String, Long> wordMap = Arrays.stream(input.toLowerCase().split(" ")).collect(Collectors
                 .groupingBy(word -> word, Collectors.counting()));
         System.out.println(wordMap);
-
-
 
 
         List<List<String>> listOfLists = Arrays.asList(
@@ -45,10 +45,10 @@ public class CountingGroupingMain {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
         // Summing numbers using reduce with an identity of 0
-        int sum = numbers.stream().reduce(0, (a,b)->a+b);
-        System.out.println("Sum = "+sum);
+        int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+        System.out.println("Sum = " + sum);
 
-        int prod = numbers.stream().reduce(1, (a,b)->a*b);
-        System.out.println("Product = "+prod);
+        int prod = numbers.stream().reduce(1, (a, b) -> a * b);
+        System.out.println("Product = " + prod);
     }
 }

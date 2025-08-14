@@ -1,4 +1,4 @@
-package src.model.comparator;
+package src.comparator;
 
 import src.model.City;
 
