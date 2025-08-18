@@ -1,4 +1,4 @@
-package src.callable;
+package src.Mutlithreading.callable;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -9,7 +9,7 @@ public class CallableDemo {
 
     public static void main(String[] args) {
         // Create an ExecutorService with a fixed thread pool
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         // Create Callable tasks
         Factorial task1 = new Factorial(5);
