@@ -16,7 +16,7 @@ public class CompletableFutureGetNow {
             System.out.println(result.get(5000, TimeUnit.MILLISECONDS));
         } catch (TimeoutException ignored) {
         }
-        //System.out.println(result.getNow("Calculation In progress"));
+        System.out.println(result.getNow("Calculation In progress"));
         System.out.println(currentThread());
     }
 

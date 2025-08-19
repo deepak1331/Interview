@@ -25,7 +25,7 @@ public class CompletableFutureDemo {
         //System.out.println(result.getNow("Not ready yet"));
         try {
             System.out.println(result.get(1000, TimeUnit.MILLISECONDS));
-        } catch (TimeoutException e) {
+        } catch (TimeoutException ignored) {
         }
 
         System.out.println(currentThread());
