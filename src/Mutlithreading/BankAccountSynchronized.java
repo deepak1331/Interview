@@ -1,6 +1,8 @@
 package src.Mutlithreading;
 
-public class BankAccount {
+import src.Mutlithreading.ThreadLifecylce.Bank;
+
+public class BankAccountSynchronized implements Bank {
 
     private int balance = 100;
 
