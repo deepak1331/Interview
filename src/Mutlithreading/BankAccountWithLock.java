@@ -6,6 +6,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static src.util.MyUtil.currentThread;
+import static src.util.MyUtil.getTimeTaken;
+
 public class BankAccountWithLock implements Bank {
 
     private int balance = 100;
@@ -42,14 +45,6 @@ public class BankAccountWithLock implements Bank {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public String currentThread() {
-        return Thread.currentThread().getName();
-    }
-
-    public long getTimeTaken(long startTime) {
-        return System.currentTimeMillis()-startTime;
     }
 }
 
