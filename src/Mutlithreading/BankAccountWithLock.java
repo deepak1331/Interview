@@ -1,6 +1,7 @@
 package src.Mutlithreading;
 
 import src.Mutlithreading.ThreadLifecylce.Bank;
+import src.util.MyUtil;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -31,7 +32,8 @@ public class BankAccountWithLock implements Bank {
                         balance -= amount;
                         System.out.printf("%s withdrawal completed. Available Balance Rs. %d\n", currentThread(), balance);
                     } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        Thread.currentThread().interrupt();
+                        System.out.println(MyUtil.currentThreadAndState());
                     } finally {
                         lock.unlock();
                         System.out.printf("%s > released lock. Txn Time: %d ms\n", currentThread(), getTimeTaken(startTime));
@@ -43,7 +45,8 @@ public class BankAccountWithLock implements Bank {
                 System.out.printf("%s could not acquire lock, will try later\n", currentThread());
             }
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt();
+            System.out.println(MyUtil.currentThreadAndState());
         }
     }
 }

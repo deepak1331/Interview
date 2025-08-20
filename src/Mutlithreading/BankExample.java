@@ -27,7 +27,7 @@ public class BankExample {
         ExecutorService executors = Executors.newFixedThreadPool(4);
 
         IntStream.range(0, 4).forEach(i -> executors.submit(task));
-
+        executors.shutdown();
         /*Thread t1 = new Thread(task, "MyThread_01");
         Thread t2 = new Thread(task, "MyThread_02");
         Thread t3 = new Thread(task, "MyThread_03");
