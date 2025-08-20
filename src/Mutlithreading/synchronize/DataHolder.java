@@ -5,7 +5,7 @@ public class DataHolder {
     private int data;
 
     public int getData() {
-        return this.data;
+        return data;
     }
 
     public void increment() {

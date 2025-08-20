@@ -16,7 +16,7 @@ public class CompletableFutureOrTimeout {
             } catch (InterruptedException ignored) {
             }
             return "OK";
-        }).orTimeout(1400, TimeUnit.MILLISECONDS).exceptionally(s-> "Timeout Occurred");
+        }).orTimeout(1400, TimeUnit.MILLISECONDS).exceptionally(s -> "Timeout Occurred");
         System.out.println(cf1.get());
         System.out.println("Main");
     }
