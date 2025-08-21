@@ -21,4 +21,12 @@ public class MyCallable implements Callable<String> {
         TimeUnit.SECONDS.sleep(delay);
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "MyCallable{" +
+                "name='" + name + '\'' +
+                ", delay=" + delay +
+                '}';
+    }
 }

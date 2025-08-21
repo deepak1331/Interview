@@ -1,4 +1,4 @@
-package src.Mutlithreading;
+package src.Mutlithreading.completableFuture;
 
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
