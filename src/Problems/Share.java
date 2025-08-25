@@ -1,4 +1,4 @@
-package src.problems;
+package src.Problems;
 
 /***
  * You are given an array of integers prices, where prices[i] represents the price of a stock on the i-th day.

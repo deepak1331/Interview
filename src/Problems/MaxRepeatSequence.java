@@ -1,4 +1,4 @@
-package src.problems;
+package src.Problems;
 
 public class MaxRepeatSequence {
 
