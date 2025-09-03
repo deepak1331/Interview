@@ -1,19 +1,22 @@
 package src.Problems;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Find the department-wise employee count for employees who:
- *      Have a salary above 80,000
- *      Have worked on at least one project longer than 200 days.
+ * Have a salary above 80,000
+ * Have worked on at least one project longer than 200 days.
  * From those employees, for each department, find the employee with
- *      the highest salary and the name of their longest project.
+ * the highest salary and the name of their longest project.
  * Output as a list of maps like: *
  * [
- *  { department=IT, count=3, topEmployee="Alice", longestProject="Data Migration" },
- *  { department=Finance, count=2, topEmployee="Bob", longestProject="ERP Upgrade" }
+ * { department=IT, count=3, topEmployee="Alice", longestProject="Data Migration" },
+ * { department=Finance, count=2, topEmployee="Bob", longestProject="ERP Upgrade" }
  * ]
- *
  */
 public class EmployeeProblem {
 
@@ -32,21 +35,21 @@ public class EmployeeProblem {
 
         //Defining Employees
         Employee e1 = new Employee("S01", "Deepak Yadav", "Development",
-                List.of(p1, p2, p3, p4, p5, p6), 120000.00);
+                Arrays.asList(p1, p2, p3, p4, p5, p6), 120000.00);
 
         Employee e2 = new Employee("S02", "Santosh Pandey", "Development",
-                List.of(p5, p6), 85000.00);
+                Arrays.asList(p5, p6), 85000.00);
 
         Employee e3 = new Employee("S03", "Mudit Ranjan", "Testing",
-                List.of(p5,p4, p7), 90000.00);
+                Arrays.asList(p5, p4, p7), 90000.00);
 
         Employee e4 = new Employee("S04", "Pooja Jha", "Testing",
-                List.of(p5,p7), 85000.00);
+                Arrays.asList(p5, p7), 85000.00);
 
         Employee e5 = new Employee("S05", "Raghavendra Jha", "DevOps",
-                List.of(p8, p7), 150000.00);
+                Arrays.asList(p8, p7), 150000.00);
         Employee e6 = new Employee("S06", "Shailendra", "DevOps",
-                List.of(p8, p7), 75000.00);
+                Arrays.asList(p8, p7), 75000.00);
 
 
         List<Employee> empList = List.of(e1, e2, e3, e4, e5, e6);
@@ -65,6 +68,19 @@ public class EmployeeProblem {
                 .anyMatch(project -> project.getDurationInDays() > 200)).toList();
         withPrjGreaterThan200days.forEach(System.out::println);*/
 
+        Map<String, List<Employee>> result = salGreaterThan80k.stream().collect(Collectors.groupingBy(Employee::getDepartment));
+
+        result.forEach((dept, employeeList) -> {
+            employeeList.sort(new Project.SalaryComparator());
+            Employee higestEarner = employeeList.get(0);
+            List<Project> projectsList = higestEarner.getProjects();
+            projectsList.sort(new Project.DurationComparator());
+            Project project = projectsList.get(0);
+            System.out.printf("\nDepartment: %s Highest salary is Rs. %f earned by: %s" +
+                            "Project Name: %s, Duration: %d days",
+                    dept, higestEarner.getSalary(), higestEarner.getName(),
+                    project.getName(), project.getDurationInDays());
+        });
     }
 }
 
@@ -142,9 +158,23 @@ class Project {
 
     @Override
     public String toString() {
-        return  "\n\t\t" +projectId +
+        return "\n\t\t" + projectId +
                 " > " + name +
                 " | " + durationInDays +
                 " days";
+    }
+
+    static class SalaryComparator implements Comparator<Employee> {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return Integer.compare((int) o2.getSalary(), (int) o1.getSalary());
+        }
+    }
+
+    static class DurationComparator implements Comparator<Project> {
+        @Override
+        public int compare(Project o1, Project o2) {
+            return o2.getDurationInDays() - o1.getDurationInDays();
+        }
     }
 }
