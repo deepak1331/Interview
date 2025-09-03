@@ -81,6 +81,17 @@ public class EmployeeProblem {
                     dept, higestEarner.getSalary(), higestEarner.getName(),
                     project.getName(), project.getDurationInDays());
         });
+
+        System.out.println("\n\nUsing STREAM API");
+        result.forEach((deptName, list)->{
+            list.sort(Comparator.comparingDouble(Employee::getSalary).reversed());
+            Employee employee = list.get(0);
+            employee.getProjects().sort(Comparator.comparingInt(Project::getDurationInDays).reversed());
+            System.out.printf("\nDepartment: %s Highest salary is Rs. %f earned by: %s" +
+                            "Project Name: %s, Duration: %d days",
+                    deptName, employee.getSalary(), employee.getName(),
+                    employee.getProjects().get(0).getName(), employee.getProjects().get(0).getDurationInDays());
+        });
     }
 }
 
