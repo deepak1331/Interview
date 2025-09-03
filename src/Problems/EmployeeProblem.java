@@ -32,6 +32,16 @@ public class EmployeeProblem {
         Project p7 = new Project("PCH", "PublishersClearingHouse", 190);
         Project p8 = new Project("Finserv", "CardOptimization", 210);
 
+        List<Project> mutableList = Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8);
+        List<Project> immutableList = List.of(p1, p2, p3, p4, p5, p6, p7, p8);
+
+        mutableList.sort(Comparator.comparing(Project::getProjectId));
+        mutableList.forEach(System.out::println);
+
+//        immutableList.forEach(System.out::println);
+//        //throws java.lang.UnsupportedOperationException
+//        immutableList.sort(Comparator.comparing(Project::getName));
+//        immutableList.forEach(System.out::println);
 
         //Defining Employees
         Employee e1 = new Employee("S01", "Deepak Yadav", "Development",
@@ -83,7 +93,7 @@ public class EmployeeProblem {
         });
 
         System.out.println("\n\nUsing STREAM API");
-        result.forEach((deptName, list)->{
+        result.forEach((deptName, list) -> {
             list.sort(Comparator.comparingDouble(Employee::getSalary).reversed());
             Employee employee = list.get(0);
             employee.getProjects().sort(Comparator.comparingInt(Project::getDurationInDays).reversed());
