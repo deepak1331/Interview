@@ -1,9 +1,7 @@
 package src.Problems;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -102,6 +100,25 @@ public class EmployeeProblem {
                     deptName, employee.getSalary(), employee.getName(),
                     employee.getProjects().get(0).getName(), employee.getProjects().get(0).getDurationInDays());
         });
+
+        Map<String, Optional<Employee>> deptWiseHigestSal = empList.stream().collect(Collectors.groupingBy(
+                Employee::getDepartment,
+                Collectors.reducing(BinaryOperator.maxBy(Comparator.comparingDouble(Employee::getSalary)))));
+
+        //System.out.println(deptWiseHigestSal);
+    /*    Optional<Map.Entry<String, Optional<Employee>>> reduce = collect.entrySet().stream()
+                .reduce(BinaryOperator.maxBy(
+                        Comparator.comparingInt(Project::getDurationInDays)));     */
+
+        deptWiseHigestSal.forEach((key, value) -> {
+            Optional<Project> projectWithHigestDuration = value.get().getProjects().stream()
+                    .reduce(BinaryOperator.maxBy(Comparator.comparingInt(Project::getDurationInDays)));
+            System.out.printf("DeptName: %s EmployeeName: %s ProjectName: %s HigestDuration: %d\n",
+                    key, deptWiseHigestSal.get(key).get().getName(), projectWithHigestDuration.get().getName(),
+                    projectWithHigestDuration.get().getDurationInDays());
+        });
+
+
     }
 }
 
