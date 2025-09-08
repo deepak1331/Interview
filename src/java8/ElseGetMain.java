@@ -10,11 +10,17 @@ public class ElseGetMain {
 
         Optional<String> player = Optional.ofNullable("Deepak Yadav");
 
+        /*
+         * OrElse calls the method, regardless of the optional is empty or not
+         * Hence wastes resources, should be avoided if the values is complex
+         */
         String orElseResult = player.orElse(n.generate());
-        String orElseGetResult = player.orElseGet(n::generate);
-
-
         System.out.println("value in orElse Result: " + orElseResult);
+
+        /*
+        * Method is called only when the orElseGet has empty optional
+         */
+        String orElseGetResult = player.orElseGet(n::generate);
         System.out.println("value in orElseGet Result: " + orElseGetResult);
     }
 }
